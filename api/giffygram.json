@@ -1,6 +1,11 @@
 {
-	"users": [],
-	"posts": [],
-	"messages":[]
+  "users": [
+    {
+      "name": "Bryan",
+      "email": "bryan@bn.com",
+      "id": 1
+    }
+  ],
+  "posts": [],
+  "messages": []
 }
-

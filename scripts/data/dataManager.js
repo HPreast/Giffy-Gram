@@ -28,11 +28,11 @@ export const getMessages = () => {
 const loggedInUser = {
     id: 1,
     name: "Bryan",
-    email: "bryan@me.com"
+    email: "bryan@bn.com"
 }
 
 export const getLoggedInUser = () => {
-    return loggedInUser;
+    return {...loggedInUser};
 }
 
 const getJokes = () => {
