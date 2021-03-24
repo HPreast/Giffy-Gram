@@ -14,7 +14,7 @@ export const usePostCollection = () => {
 }
 
 export const getPosts = () => {
-    return fetch("http://localhost:8088/posts")
+    return fetch("http://localhost:8088/posts?_expand=user")
     .then(response => response.json())
     .then(parsedResponse => {
         //do something with parsedResponse
@@ -32,10 +32,10 @@ export const getMessages = () => {
     })
 }
 
-const loggedInUser = {
-    id: 1,
-    name: "Bryan",
-    email: "bryan@bn.com"
+let loggedInUser = {}
+
+export const logoutUser = () => {
+    loggedInUser = {}
 }
 
 export const getLoggedInUser = () => {
@@ -116,4 +116,48 @@ export const deletePost = postId => {
     })
         .then(response => response.json())
         .then(getPosts)
+  }
+
+  export const setLoggedInUser = (userObj) => {
+      loggedInUser = userObj;
+  }
+
+  export const loginUser = (userObj) => {
+      return fetch(`http://localhost:8088/users?name=${userObj.name}&email=${userObj.email}`)
+      .then(response => response.json())
+      .then(parsedUser => {
+          console.log("parsedUser", parsedUser)
+          if(parsedUser.length > 0){
+              setLoggedInUser(parsedUser[0]);
+              return getLoggedInUser();
+          } else {
+              return false;
+          }
+      })
+  }
+
+  export const registerUser = (userObj) => {
+    return fetch(`http://localhost:8088/users`, {
+      method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userObj)
+    })
+    .then(response => response.json())
+    .then(parsedUser => {
+      setLoggedInUser(parsedUser);
+      return getLoggedInUser();
+    })
+  } 
+
+  export const getUserPosts = () => {
+    const userId = getLoggedInUser().id
+    return fetch(`http://localhost:8088/posts?_expand=user`)
+      .then(response => response.json())
+      .then(parsedResponse => {
+        console.log("data with user", parsedResponse)
+        postCollection = parsedResponse
+        return parsedResponse;
+      })
   }

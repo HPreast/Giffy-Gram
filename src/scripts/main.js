@@ -1,9 +1,15 @@
-import { getUsers, getPosts, getMessages, getLoggedInUser, randomJoke, usePostCollection, createPost, deletePost, getSinglePost, updatePost } from "./data/dataManager.js"
+import {
+    getUsers, getPosts, getMessages, getLoggedInUser, randomJoke,
+    usePostCollection, createPost, deletePost, getSinglePost, updatePost,
+    logoutUser, loginUser, setLoggedInUser, registerUser
+} from "./data/dataManager.js"
 import { postList } from "./feed/postList.js"
 import { navBar } from "./nav/NavBar.js"
 import { footer } from "./nav/footer.js"
 import { PostEntry } from "./feed/postEntry.js"
 import { postEdit } from "./feed/postEdit.js"
+import { LoginForm } from "./auth/loginForm.js"
+import { RegisterForm } from "./auth/registerForm.js"
 
 
 
@@ -11,7 +17,7 @@ const showPostEntry = () => {
     const entryElement = document.querySelector(".entryForm");
     entryElement.innerHTML = PostEntry();
 }
-showPostEntry();
+
 
 const showFilteredPosts = (year) => {
     const epoch = Date.parse(`01/01/${year}`);
@@ -28,7 +34,7 @@ const showFooter = () => {
     const footerElement = document.querySelector("footer");
     footerElement.innerHTML = footer();
 }
-showFooter();
+
 
 //Application event listeners
 const applicationElement = document.querySelector(".giffygram");
@@ -43,16 +49,11 @@ applicationElement.addEventListener("change", event => {
 
 applicationElement.addEventListener("click", event => {
     if (event.target.id === "logout") {
-        console.log("You clicked on logout")
+        logoutUser();
+        console.log(getLoggedInUser());
     }
 })
 
-// applicationElement.addEventListener("click", event => {
-//     if (event.target.id.startsWith("edit")) {
-//         console.log("post clicked", event.target.id.split("--"))
-//         console.log("the id is", event.target.id.split("--")[1])
-//     }
-// })
 applicationElement.addEventListener("click", event => {
     event.preventDefault();
     if (event.target.id.startsWith("edit")) {
@@ -119,6 +120,52 @@ document.addEventListener("click", event => {
     }
 })
 
+applicationElement.addEventListener("click", event => {
+    event.preventDefault();
+    if (event.target.id === "login__submit") {
+        //collect all the details into an object
+        const userObject = {
+            name: document.querySelector("input[name='name']").value,
+            email: document.querySelector("input[name='email']").value
+        }
+        loginUser(userObject)
+            .then(dbUserObj => {
+                if (dbUserObj) {
+                    sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+                    startGiffyGram();
+                } else {
+                    //got a false value - no user
+                    const entryElement = document.querySelector(".entryForm");
+                    entryElement.innerHTML = `<p class="center">That user does not exist. Please try again or register for your free account.</p> ${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
+                }
+            })
+    }
+})
+
+applicationElement.addEventListener("click", event => {
+    event.preventDefault();
+    if (event.target.id === "register__submit") {
+        //collect all the details into an object
+        const userObject = {
+            name: document.querySelector("input[name='registerName']").value,
+            email: document.querySelector("input[name='registerEmail']").value
+        }
+        registerUser(userObject)
+            .then(dbUserObj => {
+                sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+                startGiffyGram();
+            })
+    }
+})
+
+applicationElement.addEventListener("click", event => {
+    if (event.target.id === "logout") {
+        logoutUser();
+        console.log(getLoggedInUser());
+        sessionStorage.clear();
+        checkForUser();
+    }
+})
 // End of application
 //delete event listener
 applicationElement.addEventListener("click", event => {
@@ -138,7 +185,7 @@ const showNavBar = () => {
     const navElement = document.querySelector("nav");
     navElement.innerHTML = navBar();
 }
-showNavBar();
+
 //End of navBar
 
 
@@ -148,30 +195,35 @@ const showPostList = () => {
         postElement.innerHTML = postList(allPosts);
     })
 }
-showPostList();
+
 
 
 const startGiffyGram = () => {
-    const postElement = document.querySelector(".postList");
-    postElement.innerHTML = "Hello Cohort 47"
+    showPostList();
+    showNavBar();
+    showFooter();
+    showPostEntry();
 }
-startGiffyGram();
 
-// getUsers()
-//     .then(data => {
-// console.log("users", data)
-//     });
 
-// getPosts()
-// .then(posts => {
-//     console.log("posts", posts)
-// });
+const checkForUser = () => {
+    if (sessionStorage.getItem("user")) {
+        setLoggedInUser(JSON.parse(sessionStorage.getItem("user")));
+        startGiffyGram();
+    } else {
+        showLoginRegister();
+    }
+}
 
-// getMessages()
-// .then(messages => {
-//     console.log("messages", messages)
-// });
+const showLoginRegister = () => {
+    showNavBar();
+    const entryElement = document.querySelector(".entryForm");
+    entryElement.innerHTML = `${LoginForm()} <hr> <hr/> ${RegisterForm()}`;
+    const postElement = document.querySelector(".postList");
+    postElement.innerHTML = "";
+}
 
+checkForUser();
 randomJoke();
 getLoggedInUser();
 
@@ -179,3 +231,5 @@ const showEdit = (postObj) => {
     const entryElement = document.querySelector(".entryForm");
     entryElement.innerHTML = postEdit(postObj);
 }
+
+
