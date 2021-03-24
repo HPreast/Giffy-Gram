@@ -1,5 +1,5 @@
 export const getUsers = () => {
-    return fetch("http://localhost:5000/users")
+    return fetch("http://localhost:8088/users")
     .then(response => response.json())
     .then(parsedResponse => {
         //do something with parsedResponse
@@ -8,7 +8,7 @@ export const getUsers = () => {
 }
 
 export const getPosts = () => {
-    return fetch("http://localhost:5000/posts")
+    return fetch("http://localhost:8088/posts")
     .then(response => response.json())
     .then(parsedResponse => {
         //do something with parsedResponse
@@ -17,7 +17,7 @@ export const getPosts = () => {
 }
 
 export const getMessages = () => {
-    return fetch("http://localhost:5000/messages")
+    return fetch("http://localhost:8088/messages")
     .then(response => response.json())
     .then(parsedResponse => {
         //do something with parsedResponse
