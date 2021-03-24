@@ -6,6 +6,87 @@
       "id": 1
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "title": "Laughing Shaq",
+      "imageURL": "https://giphy.com/gifs/fallontonight-funny-lol-88iYsvbegSUn9bSTF8",
+      "description": "Shaq loves to laugh",
+      "userId": 1,
+      "timestamp": 1616602957616,
+      "id": 1
+    },
+    {
+      "title": "Laughing Shaq",
+      "imageURL": "https://giphy.com/gifs/fallontonight-funny-lol-88iYsvbegSUn9bSTF8",
+      "description": "Shaq loves to laugh",
+      "userId": 1,
+      "timestamp": 1616602960328,
+      "id": 2
+    },
+    {
+      "title": "Laughing Shaq",
+      "imageURL": "https://giphy.com/gifs/fallontonight-funny-lol-88iYsvbegSUn9bSTF8",
+      "description": "Shaq loves to laugh",
+      "userId": 1,
+      "timestamp": 1616602961112,
+      "id": 3
+    },
+    {
+      "title": "Laughing Shaq",
+      "imageURL": "https://giphy.com/gifs/fallontonight-funny-lol-88iYsvbegSUn9bSTF8",
+      "description": "Shaq loves to laugh",
+      "userId": 1,
+      "timestamp": 1616602961633,
+      "id": 4
+    },
+    {
+      "title": "Laughing Shaq",
+      "imageURL": "https://giphy.com/gifs/fallontonight-funny-lol-88iYsvbegSUn9bSTF8",
+      "description": "Shaq loves to laugh",
+      "userId": 1,
+      "timestamp": 1616602961801,
+      "id": 5
+    },
+    {
+      "title": "Laughing Shaq",
+      "imageURL": "https://giphy.com/gifs/fallontonight-funny-lol-88iYsvbegSUn9bSTF8",
+      "description": "Shaq loves to laugh",
+      "userId": 1,
+      "timestamp": 1616602961985,
+      "id": 6
+    },
+    {
+      "title": "Laughing Shaq",
+      "imageURL": "https://giphy.com/gifs/fallontonight-funny-lol-88iYsvbegSUn9bSTF8",
+      "description": "Shaq loves to laugh",
+      "userId": 1,
+      "timestamp": 1616602962449,
+      "id": 7
+    },
+    {
+      "title": "Test",
+      "imageURL": "https://giphy.com/gifs/Friends-season-2-episode-12-the-one-after-superbowl-part-1-lQ1nXVifuLqyVAH2Gu",
+      "description": "Testing",
+      "userId": 1,
+      "timestamp": 1616603104512,
+      "id": 8
+    },
+    {
+      "title": "testing",
+      "imageURL": "https://giphy.com/gifs/Friends-season-2-episode-12-the-one-after-superbowl-part-1-lQ1nXVifuLqyVAH2Gu",
+      "description": "testing",
+      "userId": 1,
+      "timestamp": 1616603175968,
+      "id": 9
+    },
+    {
+      "title": "test",
+      "imageURL": "https://media.giphy.com/media/lQ1nXVifuLqyVAH2Gu/giphy.gif",
+      "description": "test",
+      "userId": 1,
+      "timestamp": 1616604051650,
+      "id": 10
+    }
+  ],
   "messages": []
 }
