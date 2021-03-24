@@ -9,6 +9,7 @@ export const Post = (postObject) => {
         <p>${postObject.timestamp}</p>
         <p>${postObject.id}</p>
         <div><button id="edit--${postObject.id}">Edit</button></div>
+        <button id="delete__${postObject.id}">Delete</button>
       </section>
     `
   }

@@ -1,4 +1,4 @@
-import { getUsers, getPosts, getMessages, getLoggedInUser, randomJoke, usePostCollection, createPost } from "./data/dataManager.js"
+import { getUsers, getPosts, getMessages, getLoggedInUser, randomJoke, usePostCollection, createPost, deletePost } from "./data/dataManager.js"
 import { postList } from "./feed/postList.js"
 import { navBar } from "./nav/NavBar.js"
 import { footer } from "./nav/footer.js"
@@ -71,6 +71,18 @@ applicationElement.addEventListener("click", event => {
 })
 // End of application
 
+//delete event listener
+applicationElement.addEventListener("click", event => {
+    event.preventDefault();
+    if (event.target.id.startsWith("delete")) {
+      const postId = event.target.id.split("__")[1];
+      deletePost(postId)
+        .then(response => {
+          showPostList();
+        })
+    }
+  })
+//end of delete
 
 //navBar
 const showNavBar = () => {
