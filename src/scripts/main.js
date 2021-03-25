@@ -75,7 +75,7 @@ applicationElement.addEventListener("click", event => {
             title: title,
             imageURL: url,
             description: description,
-            userId: 1,
+            userId: getLoggedInUser().id,
             timestamp: Date.now()
         }
         createPost(postObject)
