@@ -21,12 +21,20 @@
       "id": 10
     },
     {
-      "title": "After finishing Holiday Road",
+      "title": "When I find a spelling error in my code.",
+      "imageURL": "https://media.giphy.com/media/yfhp7az2ZBH0I/giphy.gif",
+      "description": "",
+      "userId": 2,
+      "timestamp": 1616686673810,
+      "id": 13
+    },
+    {
+      "title": "After finishing Holiday Road...",
       "imageURL": "https://media.giphy.com/media/xUPJUp6T5uD1Qkpbl6/giphy.gif",
       "description": "I hate weather.",
-      "userId": 1,
-      "timestamp": 1616682502002,
-      "id": 11
+      "userId": 2,
+      "timestamp": 1616686807970,
+      "id": 14
     }
   ],
   "messages": []
