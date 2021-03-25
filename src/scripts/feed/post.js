@@ -1,4 +1,11 @@
-import { getLoggedInUser } from "../data/dataManager.js"
+import { getLikes, getLoggedInUser } from "../data/dataManager.js"
+
+const getNumberOfLikes = (postId) => {
+  getLikes(postId)
+  .then(response => {
+    document.querySelector(`#likes__${postId}`).innerHTML = `👍 ${response.length}`;
+  })
+}
 
 export const Post = (postObject) => {
   const currentUser = getLoggedInUser().id
@@ -12,10 +19,10 @@ export const Post = (postObject) => {
         </header>
         <img class="post__image" src="${postObject.imageURL}" />
         <p>${postObject.description}</p>
-        <p>${postObject.timestamp}</p>
-        <p>${postObject.id}</p>
         <div><button id="edit__${postObject.id}">Edit</button></div>
         <button id="delete__${postObject.id}">Delete</button>
+        <button id="like__${postObject.id}">Like</button>
+        <p id="likes__${postObject.id}">👍 ${getNumberOfLikes(postObject.id)}</p>
       </section>
     `
   }else {
@@ -27,8 +34,8 @@ export const Post = (postObject) => {
       </header>
       <img class="post__image" src="${postObject.imageURL}" />
       <p>${postObject.description}</p>
-      <p>${postObject.timestamp}</p>
-      <p>${postObject.id}</p>
+      <button id="like__${postObject.id}">Like</button>
+      <p id="likes__${postObject.id}">👍 ${getNumberOfLikes(postObject.id)}</p>
       </section> `
   }
 }

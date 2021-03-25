@@ -37,5 +37,22 @@
       "id": 14
     }
   ],
-  "messages": []
+  "messages": [],
+  "userLikes": [
+    {
+      "postId": 10,
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "postId": 13,
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "postId": 14,
+      "userId": 2,
+      "id": 3
+    }
+  ]
 }
