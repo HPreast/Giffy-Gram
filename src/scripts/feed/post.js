@@ -2,7 +2,8 @@ import { getLoggedInUser } from "../data/dataManager.js"
 
 export const Post = (postObject) => {
   const currentUser = getLoggedInUser().id
-  if(currentUser === postObject.id) {
+  console.log("postObj", postObject)
+  if(currentUser === postObject.user.id) {
     return `
       <section class="post">
         <header>

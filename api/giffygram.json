@@ -19,6 +19,14 @@
       "userId": 1,
       "timestamp": 1616604051650,
       "id": 10
+    },
+    {
+      "title": "After finishing Holiday Road",
+      "imageURL": "https://media.giphy.com/media/xUPJUp6T5uD1Qkpbl6/giphy.gif",
+      "description": "I hate weather.",
+      "userId": 1,
+      "timestamp": 1616682502002,
+      "id": 11
     }
   ],
   "messages": []
